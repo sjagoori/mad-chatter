@@ -14,6 +14,10 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('message', messageText);
   });
 
+  socket.on('name', (nameString) => {
+    socket.broadcast.emit('name', nameString);
+  });
+
   socket.on('typing', (status) => {
     socket.broadcast.emit('typing', status);
   });

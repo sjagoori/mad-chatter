@@ -1,7 +1,6 @@
 let socket = io();
 const messages = document.querySelector('#chat > ol');
 const input = document.getElementById('message');
-const inputName = document.getElementById('login-name');
 const form = document.getElementsByTagName('form')[0];
 const typingText = document.getElementById('typing');
 const message = document.getElementById('message');
@@ -15,14 +14,15 @@ var startTyping;
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  let name = e.target[1].value;
+  let name = e.target[0].value;
+  let message = e.target[1].value;
 
-  let message = e.target[0].value;
   if (message != '') {
-    console.log(name);
-    socket.emit('message', message);
+    // socket.emit('message', message);
+    // socket.emit('name', name);
+    socket.emit('message', { name: name, message: message });
     addMessage(message, name);
-    e.target[0].value = '';
+    e.target[1].value = '';
   }
 });
 
@@ -47,7 +47,18 @@ buzzerBtn.addEventListener('click', () => {
 
 socket.on('message', (emitted) => {
   new Audio('https://www.myinstants.com/media/sounds/msn-sound_1.mp3').play();
-  addMessage(emitted);
+  console.log(emitted);
+  addMessage(emitted.message, emitted.name);
+  /*
+  socket.emit({
+    message: message,
+    handle: nameString
+  })
+  */
+});
+
+socket.on('name', (nameString) => {
+  console.log('nameString: ', nameString);
 });
 
 socket.on('typing', (status) => {
@@ -73,7 +84,6 @@ socket.on('buzzer', () => {
 });
 
 socket.on('onlineCount', (e) => {
-  console.log(e);
   let counter = document.getElementById('onlineCount');
   counter.textContent = e + '\tmensen online!!!';
 });
