@@ -18,9 +18,12 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('typing', status);
   });
 
-  socket.on('refresh', () => {
-    socket.broadcast.emit('refresh');
+  socket.on('buzzer', () => {
+    socket.emit('buzzer');
+    socket.broadcast.emit('buzzer');
   });
+
+  socket.emit('onlineCount', io.engine.clientsCount);
 
   socket.on('disconnect', () => {
     console.log('disconnected');
