@@ -1,8 +1,9 @@
 let socket = io();
-const messages = document.querySelector('#chat ol');
+const messages = document.querySelector('#chat > ol');
 const input = document.getElementById('message');
 const form = document.getElementsByTagName('form')[0];
 const typingText = document.getElementById('typing');
+const message = document.getElementById('message');
 
 let typing = false;
 let typingTimeout = undefined;
@@ -10,12 +11,16 @@ var startTyping;
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  let value = e.target[0].value;
-  if (value) socket.emit('message', value), (value = '');
+  let message = e.target[0].value;
+  if (message != '') {
+    socket.emit('message', message);
+    addMessage(message);
+    e.target[0].value = '';
+  }
 });
 
-form.addEventListener('keyup', () => {
-  const isTypingTimeoutDuration = 3000;
+message.addEventListener('keypress', () => {
+  const isTypingTimeoutDuration = 5000;
   clearTimeout(typingTimeout);
 
   typingText.hidden = false;
@@ -25,25 +30,31 @@ form.addEventListener('keyup', () => {
 
   typingTimeout = setTimeout(() => {
     typing = false;
-    typingText.hidden = true;
     socket.emit('typing', typing);
   }, isTypingTimeoutDuration);
 });
 
 socket.on('message', (emitted) => {
   console.log(emitted);
-  // Display message in the chat
-  let newMessage = document.createElement('li');
-  newMessage.textContent = emitted;
-  messages.appendChild(newMessage);
+  addMessage(emitted);
 });
 
-socket.on('typing', (emitted) => {
-  console.log(emitted);
-  let statusString = document.getElementsByTagName('small')[0];
-  let name = (statusString.children[0].setAttribute = 'block');
+socket.on('typing', (status) => {
+  status ? (typingText.hidden = false) : (typingText.hidden = true);
 });
 
 socket.on('connected', (e) => {
   socket.emit('status', 'online');
 });
+
+// Display message in the chat
+function addMessage(message) {
+  let newMessage = document.createElement('li');
+  newMessage.innerText = message;
+  newMessage.setAttribute('class', 'newMessage');
+  messages.appendChild(newMessage);
+  newMessage.scrollIntoView(true);
+  setTimeout(function () {
+    newMessage.removeAttribute('class', 'newMessage');
+  }, 1500);
+}

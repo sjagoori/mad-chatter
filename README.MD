@@ -14,32 +14,35 @@
 
 ## Concept
 
-This app is ...
+This application is an app where you can chat with each other.
 
 ### Features
 
-To-do list
-
-- [ ] Register an user
-- [ ] Type a message and display it in the app
+- [ ] Register an user / login with name
+- [x] Type a message and display it in the app
 - [ ] Sign in as an user
-- [ ] When user is typing, u see "_{username} is typing_"
+- [x] When user is typing, u see "_{username} is typing_"
 - [ ] The user status is display by an amount of online users
 - [ ] List of all online users (with profile picture)
 
 ### Sketches / wireflows
 
 <img src="./assets/readme/app-v1.png" alt="Screenshot of first version of the app" width="600px">
+<img src="./assets/readme/app-v2.png" alt="Screenshot of second version of the app" width="600px">
 
 ### Decisions
 
-## Code
+## Code consistency
 
-lorem
-
-Code consistency using Prettier?
-
-#### Rules
+This project uses Prettier for managing the code consistency
 
 - semicolon (?)
 - require
+
+###### .prettierrc
+
+```json
+{
+  "singleQuote": true
+}
+```

@@ -11,12 +11,11 @@ io.on('connection', (socket) => {
   console.log('user connected');
 
   socket.on('message', (messageText) => {
-    console.log('message is: ', messageText);
+    socket.broadcast.emit('message', messageText);
   });
 
   socket.on('typing', (status) => {
-    socket.emit('typing', status);
-    console.log('typing: \t', status);
+    socket.broadcast.emit('typing', status);
   });
 
   socket.on('disconnect', () => {
