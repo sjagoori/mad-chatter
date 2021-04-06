@@ -18,6 +18,10 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('typing', status);
   });
 
+  socket.on('refresh', () => {
+    socket.broadcast.emit('refresh');
+  });
+
   socket.on('disconnect', () => {
     console.log('disconnected');
   });

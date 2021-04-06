@@ -4,6 +4,7 @@ const input = document.getElementById('message');
 const form = document.getElementsByTagName('form')[0];
 const typingText = document.getElementById('typing');
 const message = document.getElementById('message');
+const buzzerBtn = document.getElementById('buzzer-btn');
 
 let typing = false;
 let typingTimeout = undefined;
@@ -34,8 +35,11 @@ message.addEventListener('keypress', () => {
   }, isTypingTimeoutDuration);
 });
 
+buzzerBtn.addEventListener('click', () => {
+  alert('BUZZZ'); //doet het ;)
+});
+
 socket.on('message', (emitted) => {
-  console.log(emitted);
   addMessage(emitted);
 });
 
@@ -45,6 +49,10 @@ socket.on('typing', (status) => {
 
 socket.on('connected', (e) => {
   socket.emit('status', 'online');
+});
+
+socket.on('refresh', () => {
+  location.reload();
 });
 
 // Display message in the chat

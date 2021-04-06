@@ -141,6 +141,7 @@ button {
   border-radius: 1rem;
   align-self: flex-start;
   transition: 0.2s;
+  font-size: 0.7rem;
 }
 
 #chat ol li.newMessage {
@@ -149,8 +150,7 @@ button {
 
 @keyframes fadeIn {
   0% {
-    transform: translateX(-100px) skew(10deg);
-    font-weight: bold;
+    transform: translateX(-100px);
     color: linear-gradient(
       45deg,
       red,
@@ -164,8 +164,7 @@ button {
     );
   }
   90% {
-    transform: translateX(10px) skew(0deg);
-    font-weight: bold;
+    transform: translateX(10px);
     color: linear-gradient(
       45deg,
       red,
@@ -203,6 +202,14 @@ button {
   transition: 0.2s;
   min-width: 6rem;
   text-align: center;
+}
+
+#chat form button img {
+  display: none;
+}
+
+#chat form button:hover img {
+  display: block;
 }
 
 #chat form button:hover,
