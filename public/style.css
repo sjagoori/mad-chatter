@@ -53,6 +53,10 @@ main {
   margin-bottom: 2rem;
 }
 
+main > * {
+  margin: 1rem;
+}
+
 header {
   display: flex;
 }
@@ -111,8 +115,10 @@ button {
 /* ------------------------------------------- */
 /*                   CHAT                      */
 /* ------------------------------------------- */
+
 #chat {
   margin: 0 auto;
+  margin-top: 1rem;
   color: var(--color-background);
   background-color: var(--color-text);
   min-height: 30rem;
@@ -213,16 +219,17 @@ button {
   min-width: 0;
 }
 
-#chat > button {
+#chat button {
+  background: none;
   background-color: var(--color-white);
-  color: var(--color-black);
+  outline: 3px red;
   transition: 0.2s;
   min-width: 7rem;
   text-align: center;
 }
 
-#chat form button:hover,
-#chat form button:focus {
+#chat button:hover,
+#chat button:focus {
   color: white;
   background: linear-gradient(
     -45deg,
@@ -285,7 +292,10 @@ button {
   }
 }
 
-/* footer */
+/* ------------------------------------------- */
+/*                   FOOTER                    */
+/* ------------------------------------------- */
+
 footer a:hover {
   background: linear-gradient(to bottom, #51eaa3 3em, transparent 0%);
   width: max-content;

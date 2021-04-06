@@ -18,8 +18,6 @@ form.addEventListener('submit', (e) => {
   let message = e.target[1].value;
 
   if (message != '') {
-    // socket.emit('message', message);
-    // socket.emit('name', name);
     socket.emit('message', { name: name, message: message });
     addMessage(message, name);
     e.target[1].value = '';
@@ -49,12 +47,6 @@ socket.on('message', (emitted) => {
   new Audio('https://www.myinstants.com/media/sounds/msn-sound_1.mp3').play();
   console.log(emitted);
   addMessage(emitted.message, emitted.name);
-  /*
-  socket.emit({
-    message: message,
-    handle: nameString
-  })
-  */
 });
 
 socket.on('name', (nameString) => {
