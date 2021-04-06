@@ -46,7 +46,9 @@ body {
   min-height: 100%;
   height: 100%;
   padding-bottom: 10rem;
+  text-align: center;
 }
+
 
 header,
 main {
@@ -110,6 +112,12 @@ button {
     red
   );
   color: var(--color-black);
+}
+
+button:nth-child(1) {
+  margin: 0 auto;
+  color: white;
+  text-shadow: 0 0 10px black;
 }
 
 /* ------------------------------------------- */
@@ -250,6 +258,7 @@ button {
   font-style: italic;
   opacity: 0.7;
   font-size: 0.8rem;
+  text-align: left;
 }
 
 .buzzing * {

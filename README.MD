@@ -5,6 +5,8 @@
 
 <img src="public/assets/readme/app-finished.png" alt="Screenshot application" width="600px">
 
+[Live link](https://real-time-web-2021.herokuapp.com/)
+
 ## Concept
 
 This application is an app where you can chat with each other. The app is built with [socket.io](https://socket.io/), [NodeJS](https://nodejs.org/en/) and [Express](https://expressjs.com/). The User Interface has a super user-friendly modern interface .. or not? :stuck_out_tongue_winking_eye:
