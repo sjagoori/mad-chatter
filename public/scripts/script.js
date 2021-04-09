@@ -45,12 +45,10 @@ buzzerBtn.addEventListener('click', () => {
 
 socket.on('message', (emitted) => {
   new Audio('https://www.myinstants.com/media/sounds/msn-sound_1.mp3').play();
-  console.log(emitted);
   addMessage(emitted.message, emitted.name);
 });
 
 socket.on('name', (nameString) => {
-  console.log('nameString: ', nameString);
 });
 
 socket.on('typing', (status) => {
