@@ -24,7 +24,6 @@ io.on('connection', (socket) => {
 
   socket.on('buzzer', () => {
     io.emit('buzzer');
-    // socket.broadcast.emit('buzzer');
   });
 
   socket.emit('onlineCount', io.engine.clientsCount);
