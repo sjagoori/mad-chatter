@@ -1,5 +1,5 @@
 ###### RealTime Webapp, Minor Web Design & Development
-# Assignment 1 - Chat app
+# Assignment 1 - Mad-chatter
 ###### Contributors
 [Jochem](https://github.com/jochemvogel), [Niels](https://github.com/NielsPeeters96), [Shabier](https://github.com/sjagoori), [Sjors](https://github.com/SjorsWijsman), [Thom](https://github.com/thomvessies), [Ralf](https://github.com/ralfz123) and [Sjoerd](https://github.com/shreen020)
 
